@@ -39,7 +39,11 @@ const useStyles = makeStyles((theme)=>({
     activeLink: {
         color: "#2c79c5",
         transition: "all 0.3s ease-in",
-    }
+    },
+    addButton: {
+        display: "block",
+        margin: "0 auto",
+    },
 }))
 
 export default useStyles

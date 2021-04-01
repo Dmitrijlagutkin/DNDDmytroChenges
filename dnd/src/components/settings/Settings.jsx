@@ -17,7 +17,13 @@ export default function Settings({
     clipPadNamesList,
     users,
     name, 
-    currentClipPad
+    currentClipPad,
+    inputValueName,
+    onChangeInputValueName,
+    inputValueEmail,
+    onChangeInputValueEmail,
+    currentEmail,
+    onClickConfirmChenges
 }) {
     const classes = useStyles()      
     return(
@@ -34,14 +40,16 @@ export default function Settings({
                 <TextFieldSettings 
                 IconComponent={AssignmentIcon}
                 label="Clip pad name"
-                defaultValue={name ? name : currentClipPadName}
+                defaultValue={inputValueName ? inputValueName : currentClipPadName}
+                onChange={onChangeInputValueName}
                 />
             </div>
             <div className={classes.settingsItem}>
                 <TextFieldSettings 
                 IconComponent={MailOutlineIcon}
-                label="Send emails to this clip pad"
-                defaultValue={currentClipPad[currentClipPadName] && currentClipPad[currentClipPadName].emailSettings}
+                label="Send emails"
+                defaultValue={inputValueEmail ? inputValueEmail : currentEmail}
+                onChange={onChangeInputValueEmail}
                 />
             </div>
             <div className={classes.settingsItem}>
@@ -68,7 +76,7 @@ export default function Settings({
                     <p className={classes.titleAddUser}> Share</p>
                 </div>
             </div>
-            <Button className={classes.buttonconfirm} variant="contained" color="primary" onClick={onClickButtonSettingsHandler}>
+            <Button className={classes.buttonconfirm} variant="contained" color="primary" onClick={onClickConfirmChenges}>
                     Confirm
             </Button>
         </Drawer>

@@ -17,7 +17,7 @@ export default function ControlledOpenSelect({clipPadNamesList, handleChange, na
   const handleOpen = () => {
     setOpen(true);
   };
-  
+
   return (
     <div className={classes.settingsOther}>
       <IconButton className={classes.iconSeeAllClipPads} onClick={handleOpen}>

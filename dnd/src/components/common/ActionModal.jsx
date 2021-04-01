@@ -7,7 +7,12 @@ import {useDispatch} from 'react-redux'
 import Button from '@material-ui/core/Button';
 
 
-export default function ActionModal({handleClose, open, attentionTitle, attentionMessage, onAcceptDeleteColumnHandler, onCloseAndAcceptDeleteItem}) {
+export default function ActionModal({handleClose,
+   open,
+   attentionTitle,
+   attentionMessage, 
+   onAcceptDeleteColumnHandler, 
+   onCloseAndAcceptDeleteItem}) {
   const classes = useStyles();
   const dispatch = useDispatch()
 

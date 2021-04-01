@@ -6,6 +6,8 @@ import ListIcon from '@material-ui/icons/List';
 import SearchIcon from '@material-ui/icons/Search';
 import ShareIcon from '@material-ui/icons/Share';
 import SettingsContainer from "../settings/SettingsContainer"
+import Button from '@material-ui/core/Button';
+import NavbarModalContainer from './navbarModal/NavbarModalContainer'
 
 export default function Navbar({
     isDisabled, 
@@ -16,7 +18,11 @@ export default function Navbar({
     isOpenMenuPadsList,
     onClickToggleMenu,
     anchorEl,
-    data
+    data,
+    onCloseHandler,
+    handleOpenModal,
+    isOpenModal,
+    handleCloseModal
 }) {
     const classes = useStyles()
     return(
@@ -43,6 +49,7 @@ export default function Navbar({
                             id="lock-menu"
                             anchorEl={anchorEl}
                             open={isOpenMenuPadsList}
+                            onClick={onCloseHandler}
                         >
                             {Object.keys(data).map((item) => (
                             <NavLink 
@@ -53,10 +60,13 @@ export default function Navbar({
                             onClick={onClickMenuItemHandler}
                             >
                                 <MenuItem>
-                                    {item}
+                                    {item} 
                                 </MenuItem>
                             </NavLink>
                             ))}
+                            <Button variant="contained"  color="primary" className={classes.addButton} onClick={handleOpenModal}>
+  				                Add clip pad
+			                </Button>
                         </Menu>
                     </li>
                     <li>
@@ -65,11 +75,14 @@ export default function Navbar({
                         </IconButton>
                     </li>
                 </ul>
+                
             </nav>
+            
             <SettingsContainer 
             isOpenSettings={isOpenSettings} 
             onClickButtonSettingsHandler={onClickButtonSettingsHandler} 
             />
+            <NavbarModalContainer open={isOpenModal} handleClose={handleCloseModal} />
         </>
     )
 }

@@ -5,12 +5,21 @@ import { padsList } from "../../data/padsList"
 import { useEffect } from "react"
 import {useSelector} from "react-redux"
 
-export default function NavbarContainer() {
+export default function NavbarContainer(handleOpen) {
     const {data} = useSelector((state) => state )
     const [isDisabled, setIsDisabled] = useState(true)
     const [isOpenSettings, setIsOpenSettings] = useState(false)
     const [isOpenMenuPadsList, setIsOpenMenuPadsList] = useState(false)
     const [anchorEl, setAnchorEl] = useState(null);
+    const [isOpenModal, setIsOpenModal] = useState(false)
+
+    const handleOpenModal = () => {
+        setIsOpenModal(true);
+      };
+    
+      const handleCloseModal = () => {
+        setIsOpenModal(false);
+      };
 
     const history = useHistory()
 
@@ -19,6 +28,15 @@ export default function NavbarContainer() {
         setIsDisabled(false)
         onClickToggleMenu()
     }
+    const onCloseHandler = () => {
+        
+        setIsOpenMenuPadsList(false)
+    }
+
+    const onOpenHandler = () => {
+        setIsOpenModal(true)
+    }
+
     const onClickButtonSettingsHandler = () => setIsOpenSettings(!isOpenSettings)
     const onClickToggleMenu = (event) => {
         setIsOpenMenuPadsList(!isOpenMenuPadsList)
@@ -40,5 +58,10 @@ export default function NavbarContainer() {
         onClickToggleMenu={onClickToggleMenu}
         anchorEl={anchorEl}
         data = {data}
+        onCloseHandler={onCloseHandler}
+        onOpenHandler={onOpenHandler}
+        handleOpenModal={handleOpenModal}
+        isOpenModal={isOpenModal}
+        handleCloseModal={handleCloseModal}
         />
 }

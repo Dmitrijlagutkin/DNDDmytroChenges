@@ -1,7 +1,7 @@
 import { IconButton, TextField } from '@material-ui/core';
 import useStyles from './stylesSettings'
 
-export default function TextFieldSettings({defaultValue, label, IconComponent}) {
+export default function TextFieldSettings({defaultValue, label, IconComponent, onChange}) {
     const classes = useStyles()
     return (
         <div className={classes.settingsOther}>
@@ -11,9 +11,10 @@ export default function TextFieldSettings({defaultValue, label, IconComponent}) 
             <TextField
             className={classes.settingsInput}
             label={label}
-            defaultValue={defaultValue}
+            value={defaultValue}
             variant="outlined"
             size="small"
+            onChange={onChange}
             />
         </div>  
     )

@@ -1,9 +1,15 @@
 import { padsList} from "../../data/padsList"
-import { ADD_COLUMN, ADD_ITEM, CHANGE_COLUMN_NAME, DELETE_COLUMN, CHANGE_ITEM, DELETE_ITEM } from "../types"
-
-const defaultState = padsList
+import { ADD_COLUMN, 
+    ADD_ITEM, 
+    CHANGE_COLUMN_NAME, 
+    DELETE_COLUMN, 
+    CHANGE_ITEM, 
+    DELETE_ITEM, 
+    ADD_CLIP_PAD, 
+    CHENGE_CLIP_PAD_NAME 
+} from "../types"
     
-export default function dataReducer(state = defaultState, action) {
+export default function dataReducer(state = padsList, action) {
     
     switch(action.type) {
         case ADD_COLUMN:
@@ -29,13 +35,24 @@ export default function dataReducer(state = defaultState, action) {
                ...state,
             }
         case CHANGE_ITEM:
-                return {
-                    ...state, 
+            return {
+                ...state, 
             }
         case DELETE_ITEM:
-                return {
-                    ...state, 
-                }
+            return {
+                ...state, 
+            }
+        case ADD_CLIP_PAD:
+             return {
+                ...state,
+                [action.payload.clipPadTitle]: action.payload.newClipPad
+            }
+        case CHENGE_CLIP_PAD_NAME:
+            console.log(action.payload)
+            return {
+                ...state,
+              
+            }
         default:
             return state
     }

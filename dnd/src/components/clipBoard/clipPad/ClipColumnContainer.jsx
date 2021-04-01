@@ -28,10 +28,11 @@ export default function ClipColumnContainer({column, index, targetPad, clipPadNa
 
     const onAcceptDeleteColumnHandler = () => {
         dispatch(deleteColumn(removeColumn(positionInColumnArr)))
+        setIsOpenModal(false)
     }
 
     const targetListColumns = targetPad.columns.map((col)=>{
-        if(col.columnName === columnName) {
+        if(col.id === column.id) {
             col.items = items
         }    
         return col
@@ -60,11 +61,19 @@ export default function ClipColumnContainer({column, index, targetPad, clipPadNa
     }
 
     useEffect(()=>dispatch(addItem({clipPadName, changedClipPad})), [items])
+
+    // const onClickAddColumn = () => {
+    //     setColumns([...columns, {
+    //             id:`${Date.now()}`,
+    //             columnName: "unnamed",
+    //             items: []
+    //          }
+    //     ])
+    // }
      
     const onClickAddItem = () => {
-        setItems([...items, 
-            {
-                id: `${Date.now()}`,
+        setItems([...items, {
+                id:`${Date.now()}`,
                 itemTitle: "Unnamed",
                 itemText: "Write your text here",
                 img: null
@@ -78,8 +87,7 @@ export default function ClipColumnContainer({column, index, targetPad, clipPadNa
 
     const onAcceptButtonHandler = () => {
         setIsOpenEditName(!isOpenEditName)
-        dispatch(changeColumnName({clipPadName, changedClipPadColumnName}))
-        
+        dispatch(changeColumnName({clipPadName, changedClipPadColumnName}))  
     }
 
     const onChangeName = (e) => setColumnName(e.target.value)

@@ -18,7 +18,7 @@ export default function ClipBoardContainer(props) {
 
     useEffect(()=>{
         setColumns(targetPad.columns)
-    }, [clipPadName])
+    }, [clipPadName, data])
 
     const changedClipPad = {
         emailSettings: targetPad.emailSettings,
