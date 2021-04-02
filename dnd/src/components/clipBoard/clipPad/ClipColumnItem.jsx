@@ -6,6 +6,7 @@ import DoneIcon from '@material-ui/icons/Done';
 import BlockIcon from '@material-ui/icons/Block';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import ActionModal from '../../common/ActionModal'
+import UploudImg from './UploudImg'
 
 export default function ClipColumnItem({
     item, 
@@ -30,6 +31,7 @@ export default function ClipColumnItem({
         <>
         <Draggable draggableId={item.id} index={index}>
             {(provided)=>(
+               
                 <Paper  className={classes.clipColumnItem} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}> 
                     <IconButton className={classes.deleteItemButton} onClick={onOpenHandler}>
                         <DeleteForeverIcon />
@@ -41,6 +43,7 @@ export default function ClipColumnItem({
                                 Add your image
                             </Avatar>
                         }
+                         <UploudImg/>
                         <IconButton className={classes.changeImgButton}>
                             <CreateIcon />
                             <input type="file" className={classes.inputFile} onChange={onChangeFile}/>
@@ -85,8 +88,11 @@ export default function ClipColumnItem({
                         }
                     </div>
                 </Paper>
+                
             )}
+           
         </Draggable>
+       
         <ActionModal open={isOpenModal} handleClose={onCloseHandler} onCloseAndAcceptDeleteItem={onCloseAndAcceptDeleteItem} attentionTitle={"Are you sure"} attentionMessage={"Do you want delete Item?"}/>
         </>
     )

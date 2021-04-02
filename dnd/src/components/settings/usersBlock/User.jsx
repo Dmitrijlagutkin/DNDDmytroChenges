@@ -6,7 +6,7 @@ export default function User({user}) {
 
 	return(
 		<div className={classes.settingsOther}>
-            <p className={classes.userStatus}>status - invited</p>
+            <p className={classes.userStatus}>status - uninvited</p>
             <TextField
             className={classes.settingsInput}
             label="Email"
@@ -14,7 +14,9 @@ export default function User({user}) {
             variant="outlined"
             size="small"
             />
+            
         </div>
+        
 	)
  
 }

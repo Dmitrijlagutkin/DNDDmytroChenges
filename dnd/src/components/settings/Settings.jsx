@@ -5,7 +5,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import SelectSeeMyClipPads from './SelectSeeMyClipPads'
 import useStyles from "./stylesSettings"
-import UsersList from './usersBlock/UsersList'
+import UsersListContainer from './usersBlock/UsersListContainer'
 import TextFieldSettings from './TextFieldSettings'
 import Privace from './Privace'
 
@@ -17,13 +17,12 @@ export default function Settings({
     clipPadNamesList,
     users,
     name, 
-    currentClipPad,
     inputValueName,
     onChangeInputValueName,
     inputValueEmail,
     onChangeInputValueEmail,
     currentEmail,
-    onClickConfirmChenges
+    onClickConfirmChenges,
 }) {
     const classes = useStyles()      
     return(
@@ -53,7 +52,7 @@ export default function Settings({
                 />
             </div>
             <div className={classes.settingsItem}>
-                <UsersList 
+                <UsersListContainer 
                 users={users}
                 />
             </div>

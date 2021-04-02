@@ -16,7 +16,7 @@ export default function Pravicy() {
             <div className={classes.settingsFlexCenter}> 
                 <p className={classes.privaceText}>Private</p>
                 <Switches/>
-                <p className={classes.privaceText}>Pablic</p>
+                <p className={classes.privaceText}>Public</p>
             </div>
         </>
     )

@@ -29,7 +29,9 @@ export default function ClipBoard({columns, handleOnDragEnd, clipPadName, onClic
                         </div>
                     )}
                 </Droppable>
+                
             </DragDropContext>
+            
         </div>
     )
 }   

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import ClipBoard from "./ClipBoard"
 import {useDispatch} from "react-redux" 
-import {addColumn} from "../../redux/actions/index"
-import {setCurrentClipPad} from "../../redux/actions/index"
+import {addColumn, setCurrentClipPad} from "../../redux/actions/index"
 
 export default function ClipBoardContainer(props) {
     const { data } = useSelector((state)=> state)
@@ -14,7 +13,7 @@ export default function ClipBoardContainer(props) {
 
     useEffect(()=>{
         dispatch(setCurrentClipPad({[clipPadName]: targetPad}))
-    }, [columns])
+    }, [data])
 
     useEffect(()=>{
         setColumns(targetPad.columns)

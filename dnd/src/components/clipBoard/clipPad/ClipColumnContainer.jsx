@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import {addItem, deleteColumn} from '../../../redux/actions/index'
-import {changeColumnName} from '../../../redux/actions/'
+import {addItem, deleteColumn, changeColumnName} from '../../../redux/actions/index'
 import {useDispatch} from 'react-redux'
 import ClipColumn from './ClipColumn'
 
@@ -61,15 +60,6 @@ export default function ClipColumnContainer({column, index, targetPad, clipPadNa
     }
 
     useEffect(()=>dispatch(addItem({clipPadName, changedClipPad})), [items])
-
-    // const onClickAddColumn = () => {
-    //     setColumns([...columns, {
-    //             id:`${Date.now()}`,
-    //             columnName: "unnamed",
-    //             items: []
-    //          }
-    //     ])
-    // }
      
     const onClickAddItem = () => {
         setItems([...items, {

@@ -1,6 +1,6 @@
 export const padsList = {
     "First clip pad" : {
-        emailSettings: "test@mail.com",
+        emailSettings: "testFirst@mail.com",
         users: ["one@mail.com", "two@mail.com", "three@maol.com"],
         isPrivate: true,
         columns: [
@@ -49,7 +49,7 @@ export const padsList = {
         ]
     },
     "Second clip pad": {
-        emailSettings: "test@mail.com",
+        emailSettings: "testSecond@mail.com",
         users: ["one@mail.com", "two@mail.com", "three@maol.com"],
         isPrivate: false,
         columns: [
@@ -92,7 +92,7 @@ export const padsList = {
         ]
     },
     "Third clip pad": {
-        emailSettings: "test@mail.com",
+        emailSettings: "testThird@mail.com",
         users: ["one@mail.com", "two@mail.com", "three@maol.com"],
         isPrivate: true,
         columns: [

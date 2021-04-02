@@ -10,7 +10,9 @@ export default function ClipColumnItemContainer({item, index, items}) {
     const [itemText, setItemText] = useState(item.itemText)
     const [isEditItem, setEditItemTitle] = useState(false)
     const [isOpenModal, setIsOpenModal] = useState(false)
+
     const onChangeFile = (e) => console.log(e.target.files)
+    
     const onChangeText = (e) => setItemText(e.target.value)
     const onChangeTitle = (e) => setItemTitle(e.target.value)
     const onCLickToggleEditItem = () => setEditItemTitle(!isEditItem)

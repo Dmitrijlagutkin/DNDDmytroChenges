@@ -7,5 +7,7 @@ export const CHANGE_ITEM = "CHANGE_ITEM"
 export const DELETE_ITEM = "DELETE_ITEM"
 export const ADD_CLIP_PAD = "ADD_CLIP_PAD"
 export const CHENGE_CLIP_PAD_NAME = "CHENGE_CLIP_PAD_NAME"
+export const CHENGE_CLIP_PAD_EMAIL = "CHENGE_CLIP_PAD_EMAIL"
+export const ADD_USER = "ADD_USER"
 
 

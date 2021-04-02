@@ -4,6 +4,7 @@ import {useHistory} from 'react-router-dom'
 import Settings from './Settings'
 import {useDispatch} from 'react-redux'
 import {chengeClipPadName} from '../../redux/actions/index'
+import {setCurrentClipPad, chengeClipPadEmail} from '../../redux/actions/index'
 
 export default function SettingsContainer({isOpenSettings, onClickButtonSettingsHandler}) {
     const history = useHistory()
@@ -17,7 +18,6 @@ export default function SettingsContainer({isOpenSettings, onClickButtonSettings
     const [inputValueName, setInputValueName] = useState("")
     const [inputValueEmail, setInputValueEmail] = useState("")
     const dispatch = useDispatch()
-    
 
     useEffect(()=>{
         Object.keys(currentClipPad).length && setUsers(currentClipPad[currentClipPadName].users)
@@ -32,31 +32,53 @@ export default function SettingsContainer({isOpenSettings, onClickButtonSettings
         }
     }
 
-    const handleChange = (e) => {
+    const handleChangeInSelect = (e) => {
       setName(e.target.value)
       setInputValueName(e.target.value)
+    }
+
+    const handleChangeEmail = (e) => {
       setInputValueEmail(e.target.value)
     }
 
-    // const newData = {
-    //   ...data,
-    //   data[]
-    // }
+    const newData = {};
+
+    const chengeData = (newData, data, newValue, oldValue) => {
+      if (newValue != '') {
+        delete Object.assign(newData, data, {[newValue]: data[oldValue] })[oldValue]
+      }
+    }
+
+    const changedClipPadEmail = {
+      emailSettings: inputValueEmail,
+      isPrivate: Object.keys(currentClipPad).length && currentClipPad[currentClipPadName].isPrivate,
+      users: Object.keys(currentClipPad).length && currentClipPad[currentClipPadName].users,
+      columns: Object.keys(currentClipPad).length && currentClipPad[currentClipPadName].columns,
+  }
     
     const onClickConfirmChenges = () => {
-      dispatch(chengeClipPadName({inputValueName, data, currentClipPadName}))
+      if (inputValueName !== "") {
+        chengeData(newData, data, inputValueName, currentClipPadName)
+        dispatch(chengeClipPadName({newData}))
+        const valueName = inputValueName
+        dispatch(chengeClipPadEmail({valueName, changedClipPadEmail}))
+        dispatch(setCurrentClipPad({[inputValueName]: data[currentClipPadName]}))
+        history.push(`/clip-board/${inputValueName}`)
+      } 
+      if (inputValueName === "" && inputValueEmail != "") {
+        const valueName = currentClipPadName
+        dispatch(chengeClipPadEmail({valueName , changedClipPadEmail}))
+      }
       onClickButtonSettingsHandler()
     }
 
-
     const onChangeInputValueName = (e) => setInputValueName(e.target.value)
     const onChangeInputValueEmail = (e) => setInputValueEmail(e.target.value)
-
-             
+      
     return(<Settings 
             isOpenSettings={isOpenSettings}
             onClickButtonSettingsHandler={onClickButtonSettingsHandler}
-            handleChange={handleChange}
+            handleChange={handleChangeInSelect}
             currentClipPadName={currentClipPadName}
             clipPadNamesList={clipPadNamesList}
             users={users}
@@ -69,5 +91,6 @@ export default function SettingsContainer({isOpenSettings, onClickButtonSettings
             currentClipPad={currentClipPad}
             currentEmail={currentEmail}
             onClickConfirmChenges={onClickConfirmChenges}
+            handleChangeEmail={handleChangeEmail}
             />)
 }

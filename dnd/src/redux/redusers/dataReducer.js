@@ -6,7 +6,9 @@ import { ADD_COLUMN,
     CHANGE_ITEM, 
     DELETE_ITEM, 
     ADD_CLIP_PAD, 
-    CHENGE_CLIP_PAD_NAME 
+    CHENGE_CLIP_PAD_NAME,
+    CHENGE_CLIP_PAD_EMAIL,
+    ADD_USER  
 } from "../types"
     
 export default function dataReducer(state = padsList, action) {
@@ -25,7 +27,7 @@ export default function dataReducer(state = padsList, action) {
                 [targetClipPadItem] : action.payload.changedClipPad,
             }
         case CHANGE_COLUMN_NAME:
-            const targetClipPadName = action.payload.clipPadName   
+            const targetClipPadName = action.payload.inputValueName   
             return {
                 ...state,
                 [targetClipPadName] : action.payload.changedClipPadColumnName,
@@ -48,10 +50,16 @@ export default function dataReducer(state = padsList, action) {
                 [action.payload.clipPadTitle]: action.payload.newClipPad
             }
         case CHENGE_CLIP_PAD_NAME:
-            console.log(action.payload)
+            return action.payload.newData
+        case CHENGE_CLIP_PAD_EMAIL:
+            const targetClipPadForEmail = action.payload.valueName
             return {
                 ...state,
-              
+                [targetClipPadForEmail] : action.payload.changedClipPadEmail,
+            }
+        case ADD_USER:
+            return {
+                ...state
             }
         default:
             return state
